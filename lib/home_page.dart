@@ -1,9 +1,22 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> filters = const ["All", "Addidas", 'Nike', 'Bata'];
+  late String selectedFilter;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedFilter = filters[0];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +68,28 @@ class HomePage extends StatelessWidget {
                 itemCount: filters.length,
                 itemBuilder: (context, index) {
                   final filter = filters[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Chip(
-                      label: Text(filter),
-                      labelStyle: const TextStyle(fontSize: 16),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                        vertical: 15.0,
+                  return GestureDetector(
+                    onTap: () {
+                      if (kDebugMode) {
+                        print("Hello");
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Chip(
+                        backgroundColor: const Color.fromRGBO(245, 247, 249, 1),
+                        side: const BorderSide(
+                          color: Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        label: Text(filter),
+                        labelStyle: const TextStyle(fontSize: 16),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0,
+                          vertical: 10.0,
+                        ),
                       ),
                     ),
                   );
