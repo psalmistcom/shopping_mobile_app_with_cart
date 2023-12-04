@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:shop_app/global_variables.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "Search",
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(
-              height: 120,
+              height: 90,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: filters.length,
@@ -88,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                         label: Text(filter),
                         labelStyle: const TextStyle(fontSize: 16),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 15.0,
-                          vertical: 10.0,
+                          horizontal: 10.0,
+                          vertical: 8.0,
                         ),
                       ),
                     ),
@@ -97,6 +98,10 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
+            // ListView.builder(
+            //   itemCount: products.length,
+            //   itemBuilder: (context, index) {},
+            // )
           ],
         ),
       ),
