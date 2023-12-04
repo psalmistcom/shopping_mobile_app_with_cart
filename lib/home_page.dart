@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:shop_app/global_variables.dart';
+import 'package:shop_app/global_variables.dart';
+import 'package:shop_app/product_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,6 +29,9 @@ class _HomePageState extends State<HomePage> {
         Radius.circular(50),
       ),
     );
+
+    const whiteColor = Color.fromRGBO(245, 247, 249, 1);
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -79,9 +83,9 @@ class _HomePageState extends State<HomePage> {
                       child: Chip(
                         backgroundColor: selectedFilter == filter
                             ? Theme.of(context).colorScheme.primary
-                            : const Color.fromRGBO(245, 247, 249, 1),
+                            : whiteColor,
                         side: const BorderSide(
-                          color: Color.fromRGBO(245, 247, 249, 1),
+                          color: whiteColor,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -98,10 +102,22 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            // ListView.builder(
-            //   itemCount: products.length,
-            //   itemBuilder: (context, index) {},
-            // )
+            Expanded(
+              child: ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  return ProductCard(
+                    title: product['title'] as String,
+                    price: product['price'] as double,
+                    image: product['imageUrl'] as String,
+                    backgroundColor: index.isEven
+                        ? const Color.fromRGBO(216, 240, 235, 1)
+                        : whiteColor,
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
