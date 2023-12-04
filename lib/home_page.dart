@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> filters = const ["All", "Addidas", 'Nike', 'Bata'];
+  final List<String> filters = const ["All", "Addidas", 'Nike', 'Bata', 'Puma'];
   late String selectedFilter;
 
   @override
@@ -68,16 +67,18 @@ class _HomePageState extends State<HomePage> {
                 itemCount: filters.length,
                 itemBuilder: (context, index) {
                   final filter = filters[index];
-                  return GestureDetector(
-                    onTap: () {
-                      if (kDebugMode) {
-                        print("Hello");
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedFilter = filter;
+                        });
+                      },
                       child: Chip(
-                        backgroundColor: const Color.fromRGBO(245, 247, 249, 1),
+                        backgroundColor: selectedFilter == filter
+                            ? Theme.of(context).colorScheme.primary
+                            : const Color.fromRGBO(245, 247, 249, 1),
                         side: const BorderSide(
                           color: Color.fromRGBO(245, 247, 249, 1),
                         ),
