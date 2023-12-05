@@ -5,7 +5,7 @@ final products = [
     'price': 44.52,
     'imageUrl': 'assets/images/shoes_1.png',
     'company': 'Nike',
-    'sizes': [8, 9, 10, 11, 12],
+    'sizes': [8, 9, 10, 12],
   },
   {
     'id': '1',
