@@ -113,13 +113,16 @@ class _ProductListState extends State<ProductList> {
                       ),
                     );
                   },
-                  child: ProductCard(
-                    title: product['title'] as String,
-                    price: product['price'] as double,
-                    image: product['imageUrl'] as String,
-                    backgroundColor: index.isEven
-                        ? const Color.fromRGBO(216, 240, 235, 1)
-                        : whiteColor,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: ProductCard(
+                      title: product['title'] as String,
+                      price: product['price'] as double,
+                      image: product['imageUrl'] as String,
+                      backgroundColor: index.isEven
+                          ? const Color.fromRGBO(216, 240, 235, 1)
+                          : whiteColor,
+                    ),
                   ),
                 );
               },
