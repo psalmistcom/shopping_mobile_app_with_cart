@@ -14,6 +14,8 @@ class _HomePageState extends State<HomePage> {
   final List<String> filters = const ["All", "Addidas", 'Nike', 'Bata', 'Puma'];
   late String selectedFilter;
 
+  int currentPage = 0;
+
   @override
   void initState() {
     super.initState();
@@ -126,6 +128,19 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: '',
+          ),
+        ],
       ),
     );
   }
