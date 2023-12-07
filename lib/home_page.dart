@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
         iconSize: 30,
         currentIndex: currentPage,
         selectedFontSize: 0,
