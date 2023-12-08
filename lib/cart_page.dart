@@ -7,12 +7,12 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final cart = context.watch<CartProvider>().cart;
+
     final cart = Provider.of<CartProvider>(context).cart;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Cart",
-        ),
+        title: const Text("Cart"),
       ),
       body: ListView.builder(
         itemCount: cart.length,
@@ -35,7 +35,7 @@ class CartPage extends StatelessWidget {
               cartItem['title'].toString(),
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            subtitle: Text('Size: ${cartItem['size'] as String}'),
+            subtitle: Text('Size: ${cartItem['size']}'),
           );
         },
       ),

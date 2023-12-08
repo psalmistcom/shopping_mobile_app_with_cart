@@ -14,17 +14,17 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  int selectedSized = 0;
+  int selectedSize = 0;
 
   void onTap() {
-    if (selectedSized != 0) {
+    if (selectedSize != 0) {
       Provider.of<CartProvider>(context, listen: false).addProduct({
         'id': widget.product['id'],
         'title': widget.product['title'],
         'price': widget.product['price'],
-        'imageUrl': widget.product['imaggeUrl'],
+        'imageUrl': widget.product['imageUrl'],
         'company': widget.product['company'],
-        'size': selectedSized,
+        'size': selectedSize,
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -98,14 +98,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              selectedSized = size;
+                              selectedSize = size;
                             });
                           },
                           child: Chip(
                             label: Text(
                               size.toString(),
                             ),
-                            backgroundColor: selectedSized == size
+                            backgroundColor: selectedSize == size
                                 ? Theme.of(context).colorScheme.primary
                                 : null,
                           ),
