@@ -7,9 +7,9 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cart = context.watch<CartProvider>().cart;
+    final cart = context.watch<CartProvider>().cart;
 
-    final cart = Provider.of<CartProvider>(context).cart;
+    // final cart = Provider.of<CartProvider>(context).cart;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),
@@ -25,7 +25,53 @@ class CartPage extends StatelessWidget {
               radius: 30,
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  barrierDismissible: true,
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(
+                        'Delete Product?',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      content: const Text(
+                        'Are you sure you want to delete this product?',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'No',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            context
+                                .read<CartProvider>()
+                                .removeProduct(cartItem);
+                            // Provider.of<CartProvider>(context, listen: false)
+                            //     .removeProduct(cartItem);
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Yes',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
               icon: const Icon(
                 Icons.delete,
                 color: Colors.red,
